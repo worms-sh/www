@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>getting started</title>
+  </head>
+  <body>
+<style>
+code {
+    background-color: #F0F0F0;
+}
+p {
+    max-width: 800px;
+}
+li {
+    max-width: 600px;
+}
+</style>
+<h1 id="frequently-asked-questions">Frequently Asked Questions</h1>
+<h2 id="getting-started">Getting Started</h2>
+<h3
+id="i-see-my-computers-username-in-my-ssh-key-but-my-username-is-different-on-worms.sh.">I
+see my computer’s username in my SSH key, but my username is different
+on worms.sh.</h3>
+<p>This is ok! When you generate a public SSH key, it’ll append a
+human-readable identity at the end of it. This is so that you and others
+can see who the key belongs to. By default, this identity is
+<code>&lt;username&gt;@&lt;host&gt;</code>. Your computer and the server
+don’t actually look at that part, so you can change it to whatever you’d
+like. The <code>ssh-keygen</code> program has a built-in way of doing
+that: if you run <code>ssh-keygen -c</code>, you can change the
+“comment” of your key.</p>
+  </body>
+</html>
