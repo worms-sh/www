@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Gluten:slnt,wght@-10,100..900&display=swap');
+
+.gluten-bold-it {
+  font-family: "Gluten", cursive;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" -10;
+}
