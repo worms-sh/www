@@ -8,3 +8,78 @@
   font-variation-settings:
     "slnt" -10;
 }
+
+/* -- site tree -- */
+.site-tree {
+ --tree-spacing: -1.2em;
+ --tree-line: 2px dotted gray;
+}
+
+.site-tree ul li {
+  position: relative;
+  list-style-type: none;
+  line-height: 2em;
+}
+
+/* hide list marker for base parent */
+ul.site-tree > li{
+  list-style-type: none;
+}
+
+/* for safari (doesn't support display for summary) */
+.site-tree summary::-webkit-details-marker {
+  display: none;
+}
+
+/* add |_ tree in a box before each li element 
+ * TODO: make width dynamic */
+.site-tree li::before {
+  position: absolute;
+  left: var(--tree-spacing);
+  top: 0px;
+  border-left: var(--tree-line);
+  border-bottom: var(--tree-line);
+  content: "";
+  width: 8px;
+  height: 1em;
+}
+
+/* add connecting | under li element 
+ * TODO: make width dynamic */
+.site-tree li::after {
+  position: absolute;
+  left: var(--tree-spacing);
+  bottom: 0px;
+  border-left: var(--tree-line);
+  content: "";
+  width: var(--tree-spacing);
+  height: 100%;
+}
+
+/* don't put connecting | under last li element */
+.site-tree li:last-child::after {
+  display: none;
+}
+
+/* change cursor on hover + hide arrow */
+.site-tree summary {
+  cursor: pointer;
+  display: block;
+}
+
+/* put a character before parent entries */
+.site-tree summary::before {
+  position: absolute;
+  /*display: block;*/
+  left: var(--tree-spacing);
+  top: 0em;
+  font-size: 0.8em;
+  content: "🪱";
+  background: white;
+  width: 1em;
+  height: -1em;
+}
+
+.site-tree summary:hover::before {
+  content: "🦠";
+}
