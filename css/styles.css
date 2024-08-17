@@ -32,11 +32,6 @@ body {
   background-color: var(--bgcolor);
 }
 
-main {
-  width: 40em;
-  margin: auto;
-}
-
 a {
   text-decoration-line: none;
   color: var(--fgcolor-secondary);
@@ -59,6 +54,24 @@ code.codeblock {
 
 
 /* -- ||| UTILITIES -- */
+
+.w-sm {
+  width: 20em;
+}
+.w-med {
+  width: 40em;
+}
+.w-lg {
+  width: 60em;
+}
+.w-xl {
+  width: 80em;
+}
+
+/* I don't like this */
+.marg-auto {
+  margin: auto;
+}
 
 /* -- ||| SITEWIDE -- */
 
