@@ -8,3 +8,5 @@ install:
 	install -m 664 $(INSTALL_FLAGS) css/* $(PREFIX)/css
 	install -m 775 $(INSTALL_FLAGS) -d $(PREFIX)/getting-started
 	install -m 664 $(INSTALL_FLAGS) getting-started/* $(PREFIX)/getting-started
+	install -m 775 $(INSTALL_FLAGS) -d $(PREFIX)/users
+	install -m 664 $(INSTALL_FLAGS) users/* $(PREFIX)/users
