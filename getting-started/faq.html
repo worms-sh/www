@@ -9,9 +9,7 @@
 </head>
 
 <body>
-  <header>
-    <h1 class="site-title"><a href="/">WoRMS.sh</a></h1>
-  </header>
+<div class="flex">
 
   <nav class="navbar w-xs pad-left-sm">
     <h1 class="navbar__title"><a class="navbar__link--title" href="/">WoRMS.sh</a></h1>
@@ -29,15 +27,17 @@
     </ul>
   </nav>
 
-  <main>
+  <main class="w-med flex__left marg-left-sm flex flex--col">
 
-    <h1 id="frequently-asked-questions">Frequently Asked Questions</h1>
+    <div>
 
-    <h2 id="getting-started">Getting Started</h2>
+    <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
-    <h3 id="i-see-my-computers-username-in-my-ssh-key-but-my-username-is-different-on-worms.sh.">I
+    <h3 id="getting-started">Getting Started</h3>
+
+    <h4 id="i-see-my-computers-username-in-my-ssh-key-but-my-username-is-different-on-worms.sh.">I
       see my computer’s username in my SSH key, but my username is different
-      on worms.sh.</h3>
+      on worms.sh.</h4>
 
     <p>This is ok! When you generate a public SSH key, it’ll append a
       human-readable identity at the end of it. This is so that you and others
@@ -49,7 +49,10 @@
       “comment” of your key.
     </p>
 
+    </div>
+
   </main>
+</div>
 </body>
 
 </html>
