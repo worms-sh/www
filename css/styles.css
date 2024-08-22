@@ -27,7 +27,7 @@ html {
   --yellow: #EECF40;
 }
 
-body {
+html {
   color: var(--fgcolor);
   background-color: var(--bgcolor);
 }
@@ -74,7 +74,7 @@ code {
 }
 
 /* hide list marker */
-.no-li-style {
+.li-style-none {
   list-style: none;
 }
 
