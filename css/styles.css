@@ -55,6 +55,10 @@ code {
 
 /* -- ||| UTILITIES -- */
 
+/* widths */
+.w-xs {
+  width: 12em;
+}
 .w-sm {
   width: 20em;
 }
@@ -68,9 +72,49 @@ code {
   width: 80em;
 }
 
-/* I don't like this */
+/* heights */
+.h-sm {
+  height: 20em;
+}
+.h-med {
+  height: 40em;
+}
+.h-lg {
+  height: 60em;
+}
+.h-xl {
+  height: 80em;
+}
+
+/* margins */
 .marg-auto {
   margin: auto;
+}
+.marg-left-sm {
+  margin-left: 1em;
+}
+.marg-left-md {
+  margin-left: 2em;
+}
+.marg-top-sm {
+  margin-top: 1em;
+}
+.marg-top-md {
+  margin-top: 2em;
+}
+
+/* padding */
+.pad-left-sm {
+  padding-left: 1em;
+}
+.pad-left-md {
+  padding-left: 2em;
+}
+.pad-top-sm {
+  padding-top: 1em;
+}
+.pad-top-md {
+  padding-top: 2em;
 }
 
 /* hide list marker */
@@ -78,6 +122,21 @@ code {
   list-style: none;
 }
 
+.flex {
+  display: flex;
+}
+
+.flex--col {
+  flex-direction: column;
+}
+
+.flex__left {
+  justify-content: start;
+}
+
+.flex__vert {
+  justify-content: start;
+}
 
 /* -- ||| SITEWIDE -- */
 
