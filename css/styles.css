@@ -140,24 +140,7 @@ code {
 
 /* -- ||| SITEWIDE -- */
 
-/* || header */
-
-header .site-title {
-  color: var(--dred);
-  font-family: "Gluten", cursive;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: normal;
-  font-variation-settings:
-    "slnt" -10;
-
-  a {
-    color: inherit;
-  }
-  a:hover {
-    text-decoration-line: underline;
-  }
-}
+/* || layout */
 
 /* || navbar */
 /* -- site tree -- */
@@ -169,23 +152,44 @@ header .site-title {
   --tree-line-height: 1.2em;
 }
 
-.navbar__list {
-  padding-left: 0em;
+/* header */
+.navbar__title {
+  color: var(--dred);
+  font-family: "Gluten", cursive;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" -10;
 }
 
-.navbar__list__parent {
+.navbar__link--title {
+  color: inherit;
+}
+
+.navbar__link--title:hover {
+  color: inherit;
+  text-decoration-line: underline;
+}
+
+.navbar__list {
+  padding-left: 0em;
   list-style: none;
 }
 
-.navbar__list__item {
+.navbar__parent {
+  /* effectively empty */
+  list-style: none;
+}
+
+.navbar__item {
   position: relative;
-  list-style-type: none;
   line-height: var(--tree-line-height);
   margin-left: var(--tree-list-inset);
 }
 
 /* add |_ tree in a box before each element */
-.navbar__list__item ::before {
+.navbar__item::before {
   position: absolute;
   left: var(--tree-spacing);
   top: 0px;
@@ -197,7 +201,7 @@ header .site-title {
 }
 
 /* add connecting | under element */
-.navbar__list__item ::after {
+.navbar__item::after {
   position: absolute;
   left: var(--tree-spacing);
   bottom: 0px;
@@ -208,7 +212,7 @@ header .site-title {
 }
 
 /* don't put connecting | under last element */
-.navbar__list__item :last-child::after {
+.navbar__item:last-child::after {
   display: none;
 }
 
