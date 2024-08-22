@@ -1,30 +1,33 @@
 /* -- ||| CSS imports -- */
-@import url('https://fonts.googleapis.com/css2?family=Gluten:slnt,wght@-10..10,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Gluten:slnt,wght@-10,100..900&family=Inconsolata&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Gluten:slnt,wght@-10..10,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gluten:slnt,wght@-10,100..900&family=Inconsolata&display=swap");
 
 /* -- ||| GLOBALS -- */
 html {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
-*, *:before, *:after {
+
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
 :root {
   --bgcolor: #211818;
-  --bgcolor-secondary: #3B2E2B;
-  --fgcolor: #EEEEDD;
-  --fgcolor-secondary: #D4C3AA;
-  --pink: #E0AAEB;
-  --dpink: #C426A4;
-  --green: #7A9145;
-  --dgreen: #384F1B;
-  --blue: #55A2F1;
-  --dblue: #234A7D;
-  --red: #E27C58;
-  --dred: #B05154;
-  --yellow: #EECF40;
+  --bgcolor-secondary: #3b2e2b;
+  --fgcolor: #eeeedd;
+  --fgcolor-secondary: #d4c3aa;
+  --pink: #e0aaeb;
+  --dpink: #c426a4;
+  --green: #7a9145;
+  --dgreen: #384f1b;
+  --blue: #55a2f1;
+  --dblue: #234a7d;
+  --red: #e27c58;
+  --dred: #b05154;
+  --yellow: #eecf40;
 }
 
 html {
@@ -43,7 +46,7 @@ a:hover {
 }
 
 code {
-  font-family: 'Inconsolata', 'Courier New', 'Courier', 'monospace';
+  font-family: "Inconsolata", "Courier New", "Courier", "monospace";
   background-color: var(--bgcolor-secondary);
 }
 
@@ -52,22 +55,25 @@ code {
   width: 40em;
 }
 
-
 /* -- ||| UTILITIES -- */
 
 /* widths */
 .w-xs {
   width: 12em;
 }
+
 .w-sm {
   width: 20em;
 }
+
 .w-med {
   width: 40em;
 }
+
 .w-lg {
   width: 60em;
 }
+
 .w-xl {
   width: 80em;
 }
@@ -76,12 +82,15 @@ code {
 .h-sm {
   height: 20em;
 }
+
 .h-med {
   height: 40em;
 }
+
 .h-lg {
   height: 60em;
 }
+
 .h-xl {
   height: 80em;
 }
@@ -90,15 +99,19 @@ code {
 .marg-auto {
   margin: auto;
 }
+
 .marg-left-sm {
   margin-left: 1em;
 }
+
 .marg-left-md {
   margin-left: 2em;
 }
+
 .marg-top-sm {
   margin-top: 1em;
 }
+
 .marg-top-md {
   margin-top: 2em;
 }
@@ -107,12 +120,15 @@ code {
 .pad-left-sm {
   padding-left: 1em;
 }
+
 .pad-left-md {
   padding-left: 2em;
 }
+
 .pad-top-sm {
   padding-top: 1em;
 }
+
 .pad-top-md {
   padding-top: 2em;
 }
@@ -159,8 +175,7 @@ code {
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
-  font-variation-settings:
-    "slnt" -10;
+  font-variation-settings: "slnt" -10;
 }
 
 .navbar__link--title {

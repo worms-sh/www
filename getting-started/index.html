@@ -1,453 +1,641 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/styles.css" />
 
-<head>
-  <meta charset="utf-8"/>
-  <link rel="stylesheet" href="/css/styles.css" />
+    <title>getting started</title>
+  </head>
 
-  <title>getting started</title>
-</head>
-
-<body>
-<div class="flex">
-
-  <nav class="navbar w-xs pad-left-sm">
-    <h1 class="navbar__title"><a class="navbar__link--title" href="/">WoRMS.sh</a></h1>
-    <ul class="navbar__list">
-      <li class="navbar__parent"> 🪱 <a href="/">home</a>
+  <body>
+    <div class="flex">
+      <nav class="navbar w-xs pad-left-sm">
+        <h1 class="navbar__title">
+          <a class="navbar__link--title" href="/">WoRMS.sh</a>
+        </h1>
         <ul class="navbar__list">
-          <li class="navbar__item"> <a href="/getting-started">Getting Started</a>
+          <li class="navbar__parent">
+            🪱 <a href="/">home</a>
             <ul class="navbar__list">
-              <li class="navbar__item"><a href="/getting-started/faq.html">FAQ</a></li>
+              <li class="navbar__item">
+                <a href="/getting-started">Getting Started</a>
+                <ul class="navbar__list">
+                  <li class="navbar__item">
+                    <a href="/getting-started/faq.html">FAQ</a>
+                  </li>
+                </ul>
+              </li>
+              <!--<li class="navbar__item"> <a href="/users">Users</a></li>-->
             </ul>
           </li>
-          <!--<li class="navbar__item"> <a href="/users">Users</a></li>-->
         </ul>
-      </li>
-    </ul>
-  </nav>
+      </nav>
 
-  <main class="w-med flex__left marg-left-sm flex flex--col">
-    <section>
-      <h2 id="getting-started-on-worms.sh">Getting Started on <code>worms.sh</code></h2>
+      <main class="w-med flex__left marg-left-sm flex flex--col">
+        <section>
+          <h2 id="getting-started-on-worms.sh">
+            Getting Started on <code>worms.sh</code>
+          </h2>
 
-      <p>This is a guide for getting an account set up on
-        <code>worms.sh</code> and logging in your first time. Since
-        <code>worms.sh</code> is a basic <a href="https://en.wikipedia.org/wiki/Unix-like">UNIX-like</a><a href="#fn1"
-          class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> server with 1 CPU core and 1 GB RAM,
-        there’s no graphical interface, just a simple text terminal! If this is
-        your first time using a terminal, don’t worry – you’ll learn quickly and
-        feel comfortable in no time.
-      </p>
-
-      <p>If you have questions, check the <a href="/getting-started/faq.html">Companion FAQ</a>!</p>
- 
-      <h2 id="mac">Mac</h2>
-
-      <p>Since MacOS is a UNIX-like OS, getting set up is relatively
-        straightforward.</p>
-
-      <p>You’ll need access to the <code>Terminal</code> application. You can
-        find it by searching for it in Spotlight (Cmd-Space) or looking in your
-        Applications folder. It may be in a ‘Utilities’ sub-folder.</p>
-
-      <h3 id="command-line-shell-basics">Command line shell basics</h3>
-
-      <p>Before getting into how to access <code>worms.sh</code>, I’ll go over
-        some command line basics. If you want a more thorough introduction, <a
-          href="https://ubuntu.com/tutorials/command-line-for-beginners#1-overview">
-          this one from Ubuntu Linux
-        </a> is pretty
-        good. A couple details won’t apply
-        on your Mac (or on <code>worms.sh</code>), but the basics are the
-        same.</p>
-
-      <p>Open up your Terminal app. You should see something like:</p>
-
-      <p><code class="codeblock">baba@macbook ~ %</code></p>
-
-      <p>This is an interactive command line shell! The primary purpose of a
-        UNIX shell is to take program names as input and run those commands. For
-        example, try typing <code>ls</code> and press Enter. You should see a
-        list of familiar names appear on the screen. You just ran the
-        <code>ls</code> program, which lists the files and directories in your
-        current directory!<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> To find out
-        what your current
-        directory is, try running the <code>pwd</code> program:
-      </p>
-
-      <p><code class="codeblock">baba@macbook ~ % pwd<br />
-          /Users/baba</code></p>
-
-      <p><code>pwd</code> is short for “Parent Working Directory”, and the
-        program prints the directory you are currently in. You should see that
-        you’re currently in your user’s home directory, explaining why
-        <code>ls</code> showed you the files in your home directory.
-      </p>
-
-      <p><code>cd</code> is another useful program which stands for “Change
-        Directory.” Try running <code>cd Documents</code> and then running the
-        <code>pwd</code> and <code>ls</code> commands. You can navigate to
-        virtually any directory on your computer with <code>cd</code> and check
-        out its contents with <code>ls</code>.
-      </p>
-
-      <p>The UNIX shell can run all sorts of programs, including file
-        management programs, text editors, data processing programs, and more.
-        Anything that a computer can do that doesn’t inherently depend on
-        graphics can be done through the command line interface!</p>
-
-      <p>The UNIX shell is a powerful tool and will be the primary way that
-        you interact with <code>worms.sh</code>. While there’s a <em>lot</em>
-        more to the UNIX shell and many programs to learn about, we’ll stop here
-        and get you set up on <code>worms.sh</code>. Once you’re logged onto
-        <code>worms.sh</code>, you can explore freely without worrying about
-        messing up any important files on your computer!
-      </p>
-
-      <h3 id="setting-up-your-credentials">Setting up your credentials</h3>
-
-      <p>You’ll use <a href="https://man.freebsd.org/cgi/man.cgi?ssh"><code>ssh</code></a> to
-        access your interactive shell on <code>worms.sh</code>. SSH is the most
-        widely used protocol for securely accessing remote shells and is already
-        installed on your Mac! To authenticate with <code>worms.sh</code>, you
-        need to create an SSH <a href="https://en.wikipedia.org/wiki/Public-key_cryptography">key pair</a>. You can read up
-        on
-        the technical details if you’re interested,
-        but you don’t need to know the details to set it up. The basic idea is
-        that you’ll generate a random key which will allow you to authenticate
-        with the <code>worms.sh</code> server. This key will live on your
-        computer, meaning you can only log in to your account using the computer
-        you generate the key with! If you have multiple computers, you can
-        repeat the process with each to add a key from each computer.</p>
-
-      <p>To generate an SSH key, follow these steps (if at any point you make
-        a mistake, you can type <code>Ctrl-C</code> to terminate the
-        command):</p>
-
-      <ol type="1">
-        <li>Open a new Terminal window.</li>
-        <li>Run the following command: <code>ssh-keygen -t ed25519</code></li>
-        <li>You will be guided through an interactive process. For the first
-          prompt, press <code>Enter</code> to accept the default key file.<a href="#fn3" class="footnote-ref" id="fnref3"
-            role="doc-noteref"><sup>3</sup></a> It should be something like
-          <code>/Users/&lt;username&gt;/.ssh/id_ed25519</code>.
-        </li>
-        <li>For the next prompt, enter a passphrase for the key. Please choose a
-          secure passphrase! While you’re allowed to make a key without a
-          passphrase, this lowers the security considerably. Note that when you
-          type, you won’t see any characters appear on screen. Don’t worry, your
-          inputs are still registering!</li>
-        <li>You’ll be asked to confirm the passphrase</li>
-        <li>If successful, you’ll see a message telling you where your
-          identifications and public key are saved, along with a “key fingerprint”
-          and a randomart image. You now have an SSH key!</li>
-      </ol>
-
-      <p>In actuality, your SSH key is two keys. It consists of a <em>private
-          key</em> (<code>id_ed25519</code>) and a <em>public key</em>
-        (<code>id_ed25519.pub</code>). As the names suggest, your private key is
-        secret and your public key is public!<a href="#fn4" class="footnote-ref" id="fnref4"
-          role="doc-noteref"><sup>4</sup></a> You can share your
-        public key as widely as you please. In fact, you’ll need to share it
-        with me, the administrator, in order for me to grant you access to
-        <code>worms.sh</code>. However, you should take great care to keep your
-        private key secret!
-      </p>
-
-      <p>To view your public key, type the following command:
-        <code>cat ~/.ssh/id_ed25519.pub</code>. Here’s my public key as an
-        example:
-      </p>
-
-      <p><code class="codeblock">baba@macbook ~ % cat ~/.ssh/id_ed25519.pub<br />
-          ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGV6m2CcaZXez2AesDqBETIJJzigsE4Vtv/StBo+q/oe
-          baba@macbook</code></p>
-
-      <p>Once you generate your public key, you’ll need to send it to the
-        admin along with your username! Once this is done, you can continue
-        below to <a href="#connect">Connecting to <code>worms.sh</code></a>.</p>
-
-      <h2 id="connecting-to-worms.sh"><a id="connect">Connecting to
-          <code>worms.sh</code></a></h2>
-
-      <p>At this point, you should have an SSH key pair generated and
-        confirmation from baba that your account is set up with your SSH public
-        key authorized. Logging in is simple:</p>
-
-      <p><code class="codeblock">baba@macbook ~ % ssh admin@worms.sh<br />
-          Enter passphrase for key &#39;/Users/baba/.ssh/id_ed25519&#39;:<br />
-          Last login: Sat Aug 3 05:48:28 2024 from tmux(64826).%4<br />
-          FreeBSD 14.1-RELEASE (GENERIC) releng/14.1-n267679-10e31f0946d8<br />
-          <br />
-          Welcome to worms.sh!<br />
-          <br />
-          This system runs FreeBSD 14.1.<br />
-          <br />
-          If you have questions, break anything, or have suggestions, don&#39;t hesitate
-          to<br />
-          reach out! We&#39;re all here to learn together :)<br />
-          admin@earth /home/admin<br />
-          &gt;</code></p>
-
-      <p>In this example, I am logging in as user <code>admin</code>; you’ll
-        use the username you chose,
-        i.e. <code>ssh &lt;your-username&gt;@worms.sh</code>. Once logged in,
-        you’ll be dropped into an interactive shell, just like the one on your
-        Mac – except now you’re remotely interacting with the
-        <code>worms.sh</code> server!<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>
-      </p>
-
-      <p>You can now run the commands you were running before, like
-        <code>ls</code>. If you run <code>ls</code>, you’ll see just one file –
-        a directory called <code>public_html</code>. Try running
-        <code>cd public_html</code> and then <code>ls</code> again. This time,
-        you’ll see a file called <code>index.html</code>. This is your homepage
-        which is hosted on <code>worms.sh/~&lt;your-username&gt;</code>! Now
-        we’ll go over how to edit this file.
-      </p>
-
-      <h3 id="editing-text">Editing text</h3>
-
-      <p>To edit your homepage, you’ll need to use a text editor. FreeBSD has
-        a simple built-in editor called <code>ee</code>. Try running
-        <code>ee</code> from your interactive prompt; the text in your terminal
-        should clear and be replaced by the text editor interface. At the top
-        will be a few lines of text like this:
-      </p>
-
-      <pre><code class="codeblock">^[ (escape) menu ^y search prompt ^k delete line   ^p prev li     ^g prev page
-^o ascii code    ^x search        ^l undelete line ^n next li     ^v next page
-^u end of file   ^a begin of line ^w delete word   ^b back 1 char ^z next word
-^t top of text   ^e end of line   ^r restore word  ^f forward char
-^c command       ^d delete char   ^j undelete char              ESC-Enter: exit
-=====line 1 col 0 lines from top 1 ============================================</code></pre>
-
-
-      <p>These are the available shortcuts in <code>ee</code>, where
-        <code>^</code> is <code>Ctrl</code>. If you start typing text, you
-        should see it appear under this menu. When you run <code>ee</code>,
-        you’ll start editing a new file. Since we want to edit
-        <code>index.html</code>, let’s exit out and start over – press
-        <code>ESC-Enter</code> and then select the <code>b) no save</code>
-        option with <code>Enter</code>. You’ll be dropped back into your shell
-        in the directory you were in.
-      </p>
-
-      <p>In addition to running programs, the command line shell can also pass
-        “arguments” to those programs. Arguments are ways of giving the program
-        additional inputs such as file names, input text, or enabling optional
-        features (“options”). Each program has different allowed inputs and
-        options; thankfully, you can always read up on how to use a program by
-        reading its manual with the <code>man</code> program. Try running
-        <code>man ee</code>. You should see a document like this:
-      </p>
-
-      <pre><code class="codeblock">ee(1) ee(1)
-
-          NAME
-          ee - easy editor
-
-          SYNOPSIS
-          ee [-e] [-i] [-h] [+#] [file ...]
-          ree [-e] [-i] [-h] [+#] [file ...]
-          [...] </code></pre>
-
-      <p>You can scroll through with your arrow keys (mouse scrolling might
-        work too). You don’t really need to know the details about
-        <code>ee</code>, but the synopsis gives us useful information. Here, we
-        see the allowed methods of running <code>ee</code>. The square brackets
-        indicate optional arguments – since they’re all optional, you can run
-        <code>ee</code> on its own, like we did just earlier! But we can also
-        provide one or more files <code>[file ...]</code>. Let’s try it – press
-        <code>q</code> to quick out of the manual program and get back to your
-        shell.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>
-      </p>
-
-      <p>Now, make sure you’re in the <code>public_html</code> directory,
-        where <code>index.html</code> lives. If you’re not, use <code>cd</code>
-        to navigate to <code>~/public_html</code> (<code>~</code> is shorthand
-        for your home directory in file paths). Then, run <code>ee</code> again,
-        but this time give <code>index.html</code> as an argument:
-        <code>ee index.html</code>. You should see some HTML code, which you can
-        now start editing! You can save your work by opening the main menu with
-        <code>ESC</code> and navigating to the <code>file operations</code>
-        submenu, where you’ll see a save option. <code>ee</code> supports
-        Emacs-style keybindings – this is a way of saying you can string a
-        series of key presses together to specify certain commands without
-        manually navigating each menu. For instance, you can save by pressing
-        <code>ESC c c</code>, one key press after the other.
-      </p>
-
-      <p>As soon as you edit <code>index.html</code> and save, you can refresh
-        your browser and see the updated changes at
-        <code>worms.sh/~&lt;your-username&gt;</code>!
-      </p>
-
-      <p>Finally, to navigate back to your home directory, you can do
-        <code>cd ..</code>. The <code>..</code> is a shorthand for the parent
-        directory to the one you’re currently in.
-      </p>
-
-      <h2 id="conclusion">Conclusion</h2>
-
-      <p>Congratulations! You now have all the tools you need to start editing
-        your home page and exploring the FreeBSD operating system on
-        <code>worms.sh</code>! It might seem intimidating and cumbersome at
-        first, but it’ll all become second nature as you grow accustomed to
-        working through a terminal interface.
-      </p>
-
-      <p>A couple final notes. 1. Please don’t be afraid to ask questions!
-        We’re all here to learn together. 2. Don’t be afraid to experiment! Try
-        things, write scripts and programs, write web pages that bring down the
-        whole server – the more you break things, the more I get to learn as an
-        administrator :)</p>
-
-      <h3 id="notes-next-steps-useful-programs-tidbits-etc">Notes, next steps,
-        useful programs, tidbits, etc…</h3>
-
-      <h4 id="next-steps">Next steps?</h4>
-
-      <p>We went through a few basic UNIX shell commands, but we barely
-        scratched the surface. You don’t even know how to make a new directory,
-        rename a file, or delete stuff! <a href="https://www.geeksforgeeks.org/essential-linuxunix-commands/">This article</a>
-        gives a pretty good overview of core UNIX commands. The
-        first two sections are the most important. Here’s what I would consider
-        the minimal list of commands to know: <code>cd</code>, <code>ls</code>,
-        <code>pwd</code>, <code>mkdir</code>, <code>rmdir</code>,
-        <code>cp</code>, <code>mv</code>, <code>rm</code>, <code>cat</code>,
-        <code>less</code>, and <code>man</code>. You can probably guess what
-        most of these do (except for <code>cat</code>…) just by their names. If
-        you know these by heart and have a text editor handy, you can do
-        basically anything!
-      </p>
-
-      <p>A word of caution: be <strong>very</strong> careful when using
-        commands like <code>cp</code>, <code>mv</code>, and <em>especially</em>
-        <code>rm</code>. All of these can and will irrevocably delete or
-        overwrite files without asking for confirmation. Always double check
-        that these commands will do what you want them to do, and don’t run
-        commands or use options you don’t understand! On that note, also keep in
-        mind that this server is not backed up. Keep a copy of important data
-        (like your webpage!!) somewhere else.
-      </p>
-
-      <h4 id="cool-programs">Cool programs</h4>
-
-      <p>There’s a range of terminal-based editors out there if you want to
-        improve your editing workflow (my favorite is
-        <code>vim</code>/<code>neovim</code>). You can also edit on your
-        computer and push changes in via a number of methods, like
-        <code>scp</code> or by creating a remote git repository. This website
-        itself (and the entire server infrastructure, eventually) is kept in a
-        git repository at <code>github.com/worms-sh/worms.sh</code>!
-      </p>
-
-      <p><code>tmux</code> is a tool I’ve been using daily for years now
-        (including now, as I write this). You probably don’t need it right away,
-        but if you ever find yourself spending more than a few minutes at a time
-        in the shell, you’ll find it handy.</p>
-
-      <p>Your shell is configurable. By default, you’ll be dropped into a
-        <code>zsh</code> shell when you log in. Unless you have a reason to, you
-        probably shouldn’t change this. You can configure <code>zsh</code> by
-        editing configuration files in your home directory such as
-        <code>~/.zshrc</code>. You probably don’t have one now; to look at mine,
-        try running <code>cat /home/baba/.zshrc</code>.
-      </p>
-
-      <p>Side note: files that start with a <code>.</code> character (like
-        <code>~/.zshrc</code>) are hidden. You can see them by using the
-        <code>-a</code> option in <code>ls</code>: <code>ls -a</code>. If you
-        run that in your home directory, you’ll probably see a few hidden files
-        already. Many of these are used for configuring programs.
-      </p>
-
-      <h4 id="resources">Resources</h4>
-
-      <p>W3C has an <a href="https://www.w3schools.com/HTML/default.asp">HTML tutorial</a> that I’ve been following. MDN
-        [has
-        guides as well][mdn] and
-        seems like the go-to online web dev reference. They also both have
-        tutorials for CSS and JavaScript, which are technologies you’ll probably
-        want to use. There are tools out there which can make editing your web
-        page easier – this page was written in <a href="https://www.markdownguide.org/getting-started/">Markdown</a> and
-        translated into html using <code>pandoc</code>, which is a great for
-        simple pages like this. There are a million web frameworks out there and
-        I’d be happy to help you set any of them up! Here’s some relevant
-        terminology I’ve found to aid your research: static site generator
-        (SSG), template engine, CSS framework, JS framework.</p>
-
-      <p>git is an extremely useful tool to track and distribute changes to
-        your code. The git website has a good <a
-          href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup">guide to getting started</a>, although
-        it’s a bit tedious to go through the
-        whole thing. Section 1.6 will get you set up and Chapter 2 goes through
-        the basics. You’ll need to host a remote git repository somewhere;
-        GitHub is the most popular and is easy to use, but alternatives are
-        aplenty. Codeberg is a non-commercial alternative, if that floats your
-        boat.</p>
-
-      <p>Remember to read <code>man</code> pages before you run new commands!
-        They’re intimidating, but they contain a wealth of information, and
-        reading just the Synopsis and the Description sections will go a long
-        way. Additionally, the <a href="https://docs.freebsd.org/en/books/handbook/">FreeBSD Handbook</a>
-        is the go-to reference for anything system-related. You probably don’t
-        need this (it’s more for me than for you), but if you want to gain a
-        deeper appreciation of how the system works, Chapter 3 of the Handbook
-        is a good place to start.</p>
-
-      <p>Lmk if you have suggestions for additional resources or any feedback
-        on this guide!</p>
-    </section>
-
-    <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-      <hr />
-      <ol>
-        <li id="fn1">
-          <p>Running FreeBSD<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p>
-        </li>
-        <li id="fn2">
-          <p>A “directory” is the same thing as a “folder,” but the
-            former is usually used in the BSD/Linux world, especially when referring
-            to command line interfaces.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p>
-        </li>
-        <li id="fn3">
-          <p>If you’ve generated an SSH key pair before, you can use
-            your existing one or make a new one. If you generate a new one, make
-            sure you don’t overwrite any existing keys! You can see if you have any
-            existing keys by running <code>ls ~/.ssh</code>. If you see a file named
-            <code>id_*.pub</code> (where <code>*</code> is any string of
-            characters), then that’s an SSH key!<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a>
+          <p>
+            This is a guide for getting an account set up on
+            <code>worms.sh</code> and logging in your first time. Since
+            <code>worms.sh</code> is a basic
+            <a href="https://en.wikipedia.org/wiki/Unix-like">UNIX-like</a
+            ><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"
+              ><sup>1</sup></a
+            >
+            server with 1 CPU core and 1 GB RAM, there’s no graphical interface,
+            just a simple text terminal! If this is your first time using a
+            terminal, don’t worry – you’ll learn quickly and feel comfortable in
+            no time.
           </p>
-        </li>
-        <li id="fn4">
-          <p>The Arch Linux wiki has a good concise explanation of
-            how this works: <a href="https://wiki.archlinux.org/title/SSH_keys#Background"
-              class="uri">https://wiki.archlinux.org/title/SSH_keys#Background</a>.<a href="#fnref4" class="footnote-back"
-              role="doc-backlink">↩︎</a></p>
-        </li>
-        <li id="fn5">
-          <p>Actually, the hostname and fully-qualified domain name
-            of the machine you’re logging into is <code>earth.worms.sh</code>. But
-            that’s just a pedantic detail when there’s only one server in the
-            <code>worms.sh</code> galaxy!<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a>
-          </p>
-        </li>
-        <li id="fn6">
-          <p>The program that actually displays the manual is
-            <code>less</code>. <code>man</code> finds the manual page and opens it
-            using <code>less</code>, which is a <a href="https://en.wikipedia.org/wiki/Terminal_pager">terminal pager</a>.
-            You can configure what program the manual gets opened in – see
-            <code>man man</code>.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a>
-          </p>
-        </li>
-      </ol>
-    </section>
 
-  </main>
-</div>
-</body>
+          <p>
+            If you have questions, check the
+            <a href="/getting-started/faq.html">Companion FAQ</a>!
+          </p>
 
+          <h2 id="mac">Mac</h2>
+
+          <p>
+            Since MacOS is a UNIX-like OS, getting set up is relatively
+            straightforward.
+          </p>
+
+          <p>
+            You’ll need access to the <code>Terminal</code> application. You can
+            find it by searching for it in Spotlight (Cmd-Space) or looking in
+            your Applications folder. It may be in a ‘Utilities’ sub-folder.
+          </p>
+
+          <h3 id="command-line-shell-basics">Command line shell basics</h3>
+
+          <p>
+            Before getting into how to access <code>worms.sh</code>, I’ll go
+            over some command line basics. If you want a more thorough
+            introduction,
+            <a
+              href="https://ubuntu.com/tutorials/command-line-for-beginners#1-overview"
+            >
+              this one from Ubuntu Linux
+            </a>
+            is pretty good. A couple details won’t apply on your Mac (or on
+            <code>worms.sh</code>), but the basics are the same.
+          </p>
+
+          <p>Open up your Terminal app. You should see something like:</p>
+
+          <p><code class="codeblock">baba@macbook ~ %</code></p>
+
+          <p>
+            This is an interactive command line shell! The primary purpose of a
+            UNIX shell is to take program names as input and run those commands.
+            For example, try typing <code>ls</code> and press Enter. You should
+            see a list of familiar names appear on the screen. You just ran the
+            <code>ls</code> program, which lists the files and directories in
+            your current directory!<a
+              href="#fn2"
+              class="footnote-ref"
+              id="fnref2"
+              role="doc-noteref"
+              ><sup>2</sup></a
+            >
+            To find out what your current directory is, try running the
+            <code>pwd</code> program:
+          </p>
+
+          <p>
+            <code class="codeblock"
+              >baba@macbook ~ % pwd<br />
+              /Users/baba</code
+            >
+          </p>
+
+          <p>
+            <code>pwd</code> is short for “Parent Working Directory”, and the
+            program prints the directory you are currently in. You should see
+            that you’re currently in your user’s home directory, explaining why
+            <code>ls</code> showed you the files in your home directory.
+          </p>
+
+          <p>
+            <code>cd</code> is another useful program which stands for “Change
+            Directory.” Try running <code>cd Documents</code> and then running
+            the <code>pwd</code> and <code>ls</code> commands. You can navigate
+            to virtually any directory on your computer with <code>cd</code> and
+            check out its contents with <code>ls</code>.
+          </p>
+
+          <p>
+            The UNIX shell can run all sorts of programs, including file
+            management programs, text editors, data processing programs, and
+            more. Anything that a computer can do that doesn’t inherently depend
+            on graphics can be done through the command line interface!
+          </p>
+
+          <p>
+            The UNIX shell is a powerful tool and will be the primary way that
+            you interact with <code>worms.sh</code>. While there’s a
+            <em>lot</em> more to the UNIX shell and many programs to learn
+            about, we’ll stop here and get you set up on <code>worms.sh</code>.
+            Once you’re logged onto <code>worms.sh</code>, you can explore
+            freely without worrying about messing up any important files on your
+            computer!
+          </p>
+
+          <h3 id="setting-up-your-credentials">Setting up your credentials</h3>
+
+          <p>
+            You’ll use
+            <a href="https://man.freebsd.org/cgi/man.cgi?ssh"
+              ><code>ssh</code></a
+            >
+            to access your interactive shell on <code>worms.sh</code>. SSH is
+            the most widely used protocol for securely accessing remote shells
+            and is already installed on your Mac! To authenticate with
+            <code>worms.sh</code>, you need to create an SSH
+            <a href="https://en.wikipedia.org/wiki/Public-key_cryptography"
+              >key pair</a
+            >. You can read up on the technical details if you’re interested,
+            but you don’t need to know the details to set it up. The basic idea
+            is that you’ll generate a random key which will allow you to
+            authenticate with the <code>worms.sh</code> server. This key will
+            live on your computer, meaning you can only log in to your account
+            using the computer you generate the key with! If you have multiple
+            computers, you can repeat the process with each to add a key from
+            each computer.
+          </p>
+
+          <p>
+            To generate an SSH key, follow these steps (if at any point you make
+            a mistake, you can type <code>Ctrl-C</code> to terminate the
+            command):
+          </p>
+
+          <ol type="1">
+            <li>Open a new Terminal window.</li>
+            <li>
+              Run the following command: <code>ssh-keygen -t ed25519</code>
+            </li>
+            <li>
+              You will be guided through an interactive process. For the first
+              prompt, press <code>Enter</code> to accept the default key file.<a
+                href="#fn3"
+                class="footnote-ref"
+                id="fnref3"
+                role="doc-noteref"
+                ><sup>3</sup></a
+              >
+              It should be something like
+              <code>/Users/&lt;username&gt;/.ssh/id_ed25519</code>.
+            </li>
+            <li>
+              For the next prompt, enter a passphrase for the key. Please choose
+              a secure passphrase! While you’re allowed to make a key without a
+              passphrase, this lowers the security considerably. Note that when
+              you type, you won’t see any characters appear on screen. Don’t
+              worry, your inputs are still registering!
+            </li>
+            <li>You’ll be asked to confirm the passphrase</li>
+            <li>
+              If successful, you’ll see a message telling you where your
+              identifications and public key are saved, along with a “key
+              fingerprint” and a randomart image. You now have an SSH key!
+            </li>
+          </ol>
+
+          <p>
+            In actuality, your SSH key is two keys. It consists of a
+            <em>private key</em> (<code>id_ed25519</code>) and a
+            <em>public key</em> (<code>id_ed25519.pub</code>). As the names
+            suggest, your private key is secret and your public key is public!<a
+              href="#fn4"
+              class="footnote-ref"
+              id="fnref4"
+              role="doc-noteref"
+              ><sup>4</sup></a
+            >
+            You can share your public key as widely as you please. In fact,
+            you’ll need to share it with me, the administrator, in order for me
+            to grant you access to <code>worms.sh</code>. However, you should
+            take great care to keep your private key secret!
+          </p>
+
+          <p>
+            To view your public key, type the following command:
+            <code>cat ~/.ssh/id_ed25519.pub</code>. Here’s my public key as an
+            example:
+          </p>
+
+          <p>
+            <code class="codeblock"
+              >baba@macbook ~ % cat ~/.ssh/id_ed25519.pub<br />
+              ssh-ed25519
+              AAAAC3NzaC1lZDI1NTE5AAAAIGV6m2CcaZXez2AesDqBETIJJzigsE4Vtv/StBo+q/oe
+              baba@macbook</code
+            >
+          </p>
+
+          <p>
+            Once you generate your public key, you’ll need to send it to the
+            admin along with your username! Once this is done, you can continue
+            below to <a href="#connect">Connecting to <code>worms.sh</code></a
+            >.
+          </p>
+
+          <h2 id="connecting-to-worms.sh">
+            <a id="connect">Connecting to <code>worms.sh</code></a>
+          </h2>
+
+          <p>
+            At this point, you should have an SSH key pair generated and
+            confirmation from baba that your account is set up with your SSH
+            public key authorized. Logging in is simple:
+          </p>
+
+          <p>
+            <code class="codeblock"
+              >baba@macbook ~ % ssh admin@worms.sh<br />
+              Enter passphrase for key &#39;/Users/baba/.ssh/id_ed25519&#39;:<br />
+              Last login: Sat Aug 3 05:48:28 2024 from tmux(64826).%4<br />
+              FreeBSD 14.1-RELEASE (GENERIC) releng/14.1-n267679-10e31f0946d8<br />
+              <br />
+              Welcome to worms.sh!<br />
+              <br />
+              This system runs FreeBSD 14.1.<br />
+              <br />
+              If you have questions, break anything, or have suggestions,
+              don&#39;t hesitate to<br />
+              reach out! We&#39;re all here to learn together :)<br />
+              admin@earth /home/admin<br />
+              &gt;</code
+            >
+          </p>
+
+          <p>
+            In this example, I am logging in as user <code>admin</code>; you’ll
+            use the username you chose, i.e. <code
+              >ssh &lt;your-username&gt;@worms.sh</code
+            >. Once logged in, you’ll be dropped into an interactive shell, just
+            like the one on your Mac – except now you’re remotely interacting
+            with the <code>worms.sh</code> server!<a
+              href="#fn5"
+              class="footnote-ref"
+              id="fnref5"
+              role="doc-noteref"
+              ><sup>5</sup></a
+            >
+          </p>
+
+          <p>
+            You can now run the commands you were running before, like
+            <code>ls</code>. If you run <code>ls</code>, you’ll see just one
+            file – a directory called <code>public_html</code>. Try running
+            <code>cd public_html</code> and then <code>ls</code> again. This
+            time, you’ll see a file called <code>index.html</code>. This is your
+            homepage which is hosted on
+            <code>worms.sh/~&lt;your-username&gt;</code>! Now we’ll go over how
+            to edit this file.
+          </p>
+
+          <h3 id="editing-text">Editing text</h3>
+
+          <p>
+            To edit your homepage, you’ll need to use a text editor. FreeBSD has
+            a simple built-in editor called <code>ee</code>. Try running
+            <code>ee</code> from your interactive prompt; the text in your
+            terminal should clear and be replaced by the text editor interface.
+            At the top will be a few lines of text like this:
+          </p>
+
+          <pre><code class="codeblock">^[ (escape) menu ^y search prompt ^k delete line ^p prev li ^g prev page
+            ^o ascii code ^x search ^l undelete line ^n next li ^v next page
+            ^u end of file ^a begin of line ^w delete word ^b back 1 char ^z next word
+            ^t top of text ^e end of line ^r restore word ^f forward char
+            ^c command ^d delete char ^j undelete char ESC-Enter: exit
+            =====line 1 col 0 lines from top 1 ============================================</code></pre>
+
+          <p>
+            These are the available shortcuts in <code>ee</code>, where
+            <code>^</code> is <code>Ctrl</code>. If you start typing text, you
+            should see it appear under this menu. When you run <code>ee</code>,
+            you’ll start editing a new file. Since we want to edit
+            <code>index.html</code>, let’s exit out and start over – press
+            <code>ESC-Enter</code> and then select the
+            <code>b) no save</code> option with <code>Enter</code>. You’ll be
+            dropped back into your shell in the directory you were in.
+          </p>
+
+          <p>
+            In addition to running programs, the command line shell can also
+            pass “arguments” to those programs. Arguments are ways of giving the
+            program additional inputs such as file names, input text, or
+            enabling optional features (“options”). Each program has different
+            allowed inputs and options; thankfully, you can always read up on
+            how to use a program by reading its manual with the
+            <code>man</code> program. Try running <code>man ee</code>. You
+            should see a document like this:
+          </p>
+
+          <pre><code class="codeblock">ee(1) ee(1)
+
+            NAME
+            ee - easy editor
+
+            SYNOPSIS
+            ee [-e] [-i] [-h] [+#] [file ...]
+            ree [-e] [-i] [-h] [+#] [file ...]
+            [...] </code></pre>
+
+          <p>
+            You can scroll through with your arrow keys (mouse scrolling might
+            work too). You don’t really need to know the details about
+            <code>ee</code>, but the synopsis gives us useful information. Here,
+            we see the allowed methods of running <code>ee</code>. The square
+            brackets indicate optional arguments – since they’re all optional,
+            you can run <code>ee</code> on its own, like we did just earlier!
+            But we can also provide one or more files <code>[file ...]</code>.
+            Let’s try it – press <code>q</code> to quick out of the manual
+            program and get back to your shell.<a
+              href="#fn6"
+              class="footnote-ref"
+              id="fnref6"
+              role="doc-noteref"
+              ><sup>6</sup></a
+            >
+          </p>
+
+          <p>
+            Now, make sure you’re in the <code>public_html</code> directory,
+            where <code>index.html</code> lives. If you’re not, use
+            <code>cd</code> to navigate to <code>~/public_html</code> (<code
+              >~</code
+            >
+            is shorthand for your home directory in file paths). Then, run
+            <code>ee</code> again, but this time give <code>index.html</code> as
+            an argument: <code>ee index.html</code>. You should see some HTML
+            code, which you can now start editing! You can save your work by
+            opening the main menu with <code>ESC</code> and navigating to the
+            <code>file operations</code> submenu, where you’ll see a save
+            option. <code>ee</code> supports Emacs-style keybindings – this is a
+            way of saying you can string a series of key presses together to
+            specify certain commands without manually navigating each menu. For
+            instance, you can save by pressing <code>ESC c c</code>, one key
+            press after the other.
+          </p>
+
+          <p>
+            As soon as you edit <code>index.html</code> and save, you can
+            refresh your browser and see the updated changes at
+            <code>worms.sh/~&lt;your-username&gt;</code>!
+          </p>
+
+          <p>
+            Finally, to navigate back to your home directory, you can do
+            <code>cd ..</code>. The <code>..</code> is a shorthand for the
+            parent directory to the one you’re currently in.
+          </p>
+
+          <h2 id="conclusion">Conclusion</h2>
+
+          <p>
+            Congratulations! You now have all the tools you need to start
+            editing your home page and exploring the FreeBSD operating system on
+            <code>worms.sh</code>! It might seem intimidating and cumbersome at
+            first, but it’ll all become second nature as you grow accustomed to
+            working through a terminal interface.
+          </p>
+
+          <p>
+            A couple final notes. 1. Please don’t be afraid to ask questions!
+            We’re all here to learn together. 2. Don’t be afraid to experiment!
+            Try things, write scripts and programs, write web pages that bring
+            down the whole server – the more you break things, the more I get to
+            learn as an administrator :)
+          </p>
+
+          <h3 id="notes-next-steps-useful-programs-tidbits-etc">
+            Notes, next steps, useful programs, tidbits, etc…
+          </h3>
+
+          <h4 id="next-steps">Next steps?</h4>
+
+          <p>
+            We went through a few basic UNIX shell commands, but we barely
+            scratched the surface. You don’t even know how to make a new
+            directory, rename a file, or delete stuff!
+            <a
+              href="https://www.geeksforgeeks.org/essential-linuxunix-commands/"
+              >This article</a
+            >
+            gives a pretty good overview of core UNIX commands. The first two
+            sections are the most important. Here’s what I would consider the
+            minimal list of commands to know: <code>cd</code>, <code>ls</code>,
+            <code>pwd</code>, <code>mkdir</code>, <code>rmdir</code>,
+            <code>cp</code>, <code>mv</code>, <code>rm</code>, <code>cat</code>,
+            <code>less</code>, and <code>man</code>. You can probably guess what
+            most of these do (except for <code>cat</code>…) just by their names.
+            If you know these by heart and have a text editor handy, you can do
+            basically anything!
+          </p>
+
+          <p>
+            A word of caution: be <strong>very</strong> careful when using
+            commands like <code>cp</code>, <code>mv</code>, and
+            <em>especially</em> <code>rm</code>. All of these can and will
+            irrevocably delete or overwrite files without asking for
+            confirmation. Always double check that these commands will do what
+            you want them to do, and don’t run commands or use options you don’t
+            understand! On that note, also keep in mind that this server is not
+            backed up. Keep a copy of important data (like your webpage!!)
+            somewhere else.
+          </p>
+
+          <h4 id="cool-programs">Cool programs</h4>
+
+          <p>
+            There’s a range of terminal-based editors out there if you want to
+            improve your editing workflow (my favorite is
+            <code>vim</code>/<code>neovim</code>). You can also edit on your
+            computer and push changes in via a number of methods, like
+            <code>scp</code> or by creating a remote git repository. This
+            website itself (and the entire server infrastructure, eventually) is
+            kept in a git repository at
+            <code>github.com/worms-sh/worms.sh</code>!
+          </p>
+
+          <p>
+            <code>tmux</code> is a tool I’ve been using daily for years now
+            (including now, as I write this). You probably don’t need it right
+            away, but if you ever find yourself spending more than a few minutes
+            at a time in the shell, you’ll find it handy.
+          </p>
+
+          <p>
+            Your shell is configurable. By default, you’ll be dropped into a
+            <code>zsh</code> shell when you log in. Unless you have a reason to,
+            you probably shouldn’t change this. You can configure
+            <code>zsh</code> by editing configuration files in your home
+            directory such as <code>~/.zshrc</code>. You probably don’t have one
+            now; to look at mine, try running
+            <code>cat /home/baba/.zshrc</code>.
+          </p>
+
+          <p>
+            Side note: files that start with a <code>.</code> character (like
+            <code>~/.zshrc</code>) are hidden. You can see them by using the
+            <code>-a</code> option in <code>ls</code>: <code>ls -a</code>. If
+            you run that in your home directory, you’ll probably see a few
+            hidden files already. Many of these are used for configuring
+            programs.
+          </p>
+
+          <h4 id="resources">Resources</h4>
+
+          <p>
+            W3C has an
+            <a href="https://www.w3schools.com/HTML/default.asp"
+              >HTML tutorial</a
+            >
+            that I’ve been following. MDN [has guides as well][mdn] and seems
+            like the go-to online web dev reference. They also both have
+            tutorials for CSS and JavaScript, which are technologies you’ll
+            probably want to use. There are tools out there which can make
+            editing your web page easier – this page was written in
+            <a href="https://www.markdownguide.org/getting-started/"
+              >Markdown</a
+            >
+            and translated into html using <code>pandoc</code>, which is a great
+            for simple pages like this. There are a million web frameworks out
+            there and I’d be happy to help you set any of them up! Here’s some
+            relevant terminology I’ve found to aid your research: static site
+            generator (SSG), template engine, CSS framework, JS framework.
+          </p>
+
+          <p>
+            git is an extremely useful tool to track and distribute changes to
+            your code. The git website has a good
+            <a
+              href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup"
+              >guide to getting started</a
+            >, although it’s a bit tedious to go through the whole thing.
+            Section 1.6 will get you set up and Chapter 2 goes through the
+            basics. You’ll need to host a remote git repository somewhere;
+            GitHub is the most popular and is easy to use, but alternatives are
+            aplenty. Codeberg is a non-commercial alternative, if that floats
+            your boat.
+          </p>
+
+          <p>
+            Remember to read <code>man</code> pages before you run new commands!
+            They’re intimidating, but they contain a wealth of information, and
+            reading just the Synopsis and the Description sections will go a
+            long way. Additionally, the
+            <a href="https://docs.freebsd.org/en/books/handbook/"
+              >FreeBSD Handbook</a
+            >
+            is the go-to reference for anything system-related. You probably
+            don’t need this (it’s more for me than for you), but if you want to
+            gain a deeper appreciation of how the system works, Chapter 3 of the
+            Handbook is a good place to start.
+          </p>
+
+          <p>
+            Lmk if you have suggestions for additional resources or any feedback
+            on this guide!
+          </p>
+        </section>
+
+        <section
+          id="footnotes"
+          class="footnotes footnotes-end-of-document"
+          role="doc-endnotes"
+        >
+          <hr />
+          <ol>
+            <li id="fn1">
+              <p>
+                Running FreeBSD<a
+                  href="#fnref1"
+                  class="footnote-back"
+                  role="doc-backlink"
+                  >↩︎</a
+                >
+              </p>
+            </li>
+            <li id="fn2">
+              <p>
+                A “directory” is the same thing as a “folder,” but the former is
+                usually used in the BSD/Linux world, especially when referring
+                to command line interfaces.<a
+                  href="#fnref2"
+                  class="footnote-back"
+                  role="doc-backlink"
+                  >↩︎</a
+                >
+              </p>
+            </li>
+            <li id="fn3">
+              <p>
+                If you’ve generated an SSH key pair before, you can use your
+                existing one or make a new one. If you generate a new one, make
+                sure you don’t overwrite any existing keys! You can see if you
+                have any existing keys by running <code>ls ~/.ssh</code>. If you
+                see a file named <code>id_*.pub</code> (where <code>*</code> is
+                any string of characters), then that’s an SSH key!<a
+                  href="#fnref3"
+                  class="footnote-back"
+                  role="doc-backlink"
+                  >↩︎</a
+                >
+              </p>
+            </li>
+            <li id="fn4">
+              <p>
+                The Arch Linux wiki has a good concise explanation of how this
+                works:
+                <a
+                  href="https://wiki.archlinux.org/title/SSH_keys#Background"
+                  class="uri"
+                  >https://wiki.archlinux.org/title/SSH_keys#Background</a
+                >.<a href="#fnref4" class="footnote-back" role="doc-backlink"
+                  >↩︎</a
+                >
+              </p>
+            </li>
+            <li id="fn5">
+              <p>
+                Actually, the hostname and fully-qualified domain name of the
+                machine you’re logging into is <code>earth.worms.sh</code>. But
+                that’s just a pedantic detail when there’s only one server in
+                the <code>worms.sh</code> galaxy!<a
+                  href="#fnref5"
+                  class="footnote-back"
+                  role="doc-backlink"
+                  >↩︎</a
+                >
+              </p>
+            </li>
+            <li id="fn6">
+              <p>
+                The program that actually displays the manual is
+                <code>less</code>. <code>man</code> finds the manual page and
+                opens it using <code>less</code>, which is a
+                <a href="https://en.wikipedia.org/wiki/Terminal_pager"
+                  >terminal pager</a
+                >. You can configure what program the manual gets opened in –
+                see <code>man man</code>.<a
+                  href="#fnref6"
+                  class="footnote-back"
+                  role="doc-backlink"
+                  >↩︎</a
+                >
+              </p>
+            </li>
+          </ol>
+        </section>
+      </main>
+    </div>
+  </body>
 </html>
